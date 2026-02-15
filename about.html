@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Citizen Side</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-dark: #172554;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 15px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 100px; /* Space for fixed navbar */
+        }
+
+        /* Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: var(--primary-blue);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin: 50px 0;
+        }
+
+        /* Values Section */
+        .values-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .values-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.1);
+        }
+
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(30, 58, 138, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 20px;
+            color: var(--primary-blue);
+        }
+
+        .value-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .value-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .about-section .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .about-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(30, 58, 138, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .initials-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2F6FD6, #1E3C72);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .feature-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-card, .value-card, .about-section {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .value-card:nth-child(1) { animation-delay: 0.5s; }
+        .value-card:nth-child(2) { animation-delay: 0.6s; }
+        .value-card:nth-child(3) { animation-delay: 0.7s; }
+        .about-section { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo on far left -->
+            <div class="nav-logo">
+                <a href="index.html">
+                    <div class="logo-container">
+                        <svg class="shield-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3 6V13C3 17.5 5.5 20 12 22C18.5 20 21 17.5 21 13V6L12 2Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12L11 14L15 10" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="logo-text">CITIZEN SIDE</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Primary navigation links -->
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Help</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+
+                <!-- Dropdown trigger with arrow icon -->
+                <div class="dropdown">
+                    <button class="dropdown-trigger">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <!-- Shown when user is authenticated -->
+                        <div class="authenticated-content" style="display: none;">
+                            <a href="#"><i class="fas fa-book"></i> Guide</a>
+                            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                            <a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+
+                        <!-- Shown when user is not authenticated -->
+                        <div class="guest-content">
+                            <a href="#"><i class="fas fa-book"></i> Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language Switcher and Authentication Buttons (on far right) -->
+            <div class="nav-right">
+                <div class="auth-and-lang-container">
+                    <div class="language-switcher">
+                        <button id="lang-button" class="lang-btn">EN</button>
+                        <div id="lang-dropdown" class="lang-dropdown">
+                            <div class="lang-option" data-lang="en">English (EN)</div>
+                            <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
+                            <div class="lang-option" data-lang="am">Amharic (AM)</div>
+                            <div class="lang-option" data-lang="af">Afrikaans (AF)</div>
+                            <div class="lang-option" data-lang="so">Somali (SO)</div>
+                            <div class="lang-option" data-lang="ti">Tigrinya (TI)</div>
+                            <div class="lang-option" data-lang="wo">Wolof (WO)</div>
+                        </div>
+                    </div>
+
+                    <!-- Shown when user is NOT authenticated -->
+                    <div class="auth-buttons" id="authButtons">
+                        <a href="login.html" class="btn btn-outline">Login</a>
+                        <a href="register.html" class="btn btn-primary">Register</a>
+                    </div>
+
+                    <!-- Shown when user IS authenticated -->
+                    <div class="user-profile" id="userProfile" style="display: none;">
+                        <div class="dropdown user-dropdown">
+                            <button class="user-btn" style="margin-left: 15px; background: none; border: none; padding: 0; outline: none;">
+                                <div class="initials-avatar">J</div>
+                            </button>
+                            <div class="dropdown-content user-dropdown-content">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                                <div class="divider"></div>
+                                <a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <!-- Auth buttons at top when not logged in -->
+                <li class="mobile-auth" id="mobileAuth">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </li>
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Guide</a></li>
+                <li class="mobile-profile"><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header-section" style="background: #1a41ab; color: white; padding: 60px 20px; text-align: center; margin-bottom: 50px; border-radius: 15px;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 15px;">About our System</h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9;">Discover how our Queue Management System transforms service delivery for government institutions, banks, hospitals, and service centers</p>
+        </div>
+        
+        <!-- Feature Cards -->
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>To digitize and modernize public service queues across institutions</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Meet the Team</h3>
+                <p>A passionate team of developers building efficient digital solutions</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Our Achievements</h3>
+                <p>Successfully reducing waiting times through smart queue automation</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>Company History</h3>
+                <p>Founded to solve long waiting line challenges using technology</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Values Section -->
+            <div class="values-section">
+                <h2>Our Values</h2>
+                <div class="values-container">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="value-content">
+                            <h3>Innovation</h3>
+                            <p>We build smart, scalable, and efficient queue solutions</p>
+                        </div>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="value-content">
+                            <h3>Integrity</h3>
+                            <p>We ensure transparency, fairness, and reliability in service management</p>
+                        </div>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="value-content">
+                            <h3>Efficiency</h3>
+                            <p>We optimize waiting times and service flow using digital automation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="about-section">
+                <h2>ABOUT US</h2>
+                <p class="subtitle">Innovating for a better service experience.</p>
+                <p>The Queue Management System is designed to reduce long waiting lines in government offices, hospitals, banks, and service centers by offering digital ticketing, real-time queue tracking, analytics, and service optimization tools. Our platform streamlines operations, enhances customer experience, and provides valuable insights through comprehensive analytics.</p>
+                <p>We are committed to improving service delivery through technology, ensuring efficiency, transparency, and enhanced customer satisfaction across all public and private service sectors.</p>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

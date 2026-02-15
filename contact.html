@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Citizen Side</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-dark: #172554;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 15px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 100px; /* Space for fixed navbar */
+        }
+
+        .contact-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .contact-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-card:nth-child(1):hover {
+            transform: translateY(-10px) rotate(2deg) scale(1.05);
+            box-shadow: 0 12px 30px rgba(25, 62, 164, 0.3);
+        }
+
+        .contact-card:nth-child(2):hover {
+            transform: translateY(-10px) rotate(-2deg) scale(1.05);
+            box-shadow: 0 12px 30px rgba(25, 62, 164, 0.3);
+        }
+
+        .contact-card:nth-child(3):hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 12px 30px rgba(25, 62, 164, 0.3);
+        }
+
+        .contact-card:nth-child(4):hover {
+            transform: translateY(-10px) skew(3deg) scale(1.05);
+            box-shadow: 0 12px 30px rgba(25, 62, 164, 0.3);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(30, 58, 138, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #1e3a8a;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin: 50px 0;
+        }
+
+        /* Form Styling */
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            background: transparent;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        select.input-field {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a8a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 15px;
+        }
+
+        textarea.input-field {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Form Section */
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-form:hover {
+            box-shadow: 0 10px 30px rgba(25, 62, 164, 0.2);
+        }
+
+        /* Info Section */
+        .contact-info {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .contact-info:hover {
+            box-shadow: 0 10px 30px rgba(25, 62, 164, 0.2);
+        }
+
+        .info-title {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .info-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .info-description {
+            margin-bottom: 30px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(30, 58, 138, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a8a;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .initials-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2F6FD6, #1E3C72);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .contact-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-form, .contact-info {
+                padding: 25px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-card, .contact-form, .contact-info {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .contact-card:nth-child(1) { animation-delay: 0.1s; }
+        .contact-card:nth-child(2) { animation-delay: 0.2s; }
+        .contact-card:nth-child(3) { animation-delay: 0.3s; }
+        .contact-card:nth-child(4) { animation-delay: 0.4s; }
+        .contact-form { animation-delay: 0.5s; }
+        .contact-info { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo on far left -->
+            <div class="nav-logo">
+                <a href="index.html">
+                    <div class="logo-container">
+                        <svg class="shield-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3 6V13C3 17.5 5.5 20 12 22C18.5 20 21 17.5 21 13V6L12 2Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12L11 14L15 10" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="logo-text">CITIZEN SIDE</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Primary navigation links -->
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Help</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+
+                <!-- Dropdown trigger with arrow icon -->
+                <div class="dropdown">
+                    <button class="dropdown-trigger">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <!-- Shown when user is authenticated -->
+                        <div class="authenticated-content" style="display: none;">
+                            <a href="#"><i class="fas fa-book" style="color: #1e3a8a;"></i> Guide</a>
+                            <a href="profile.html"><i class="fas fa-user" style="color: #1e3a8a;"></i> Profile</a>
+                            <a href="#" class="logout-link"><i class="fas fa-sign-out-alt" style="color: #1e3a8a;"></i> Logout</a>
+                        </div>
+
+                        <!-- Shown when user is not authenticated -->
+                        <div class="guest-content">
+                            <a href="#"><i class="fas fa-book" style="color: #1e3a8a;"></i> Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language Switcher and Authentication Buttons (on far right) -->
+            <div class="nav-right">
+                <div class="auth-and-lang-container">
+                    <div class="language-switcher">
+                        <button id="lang-button" class="lang-btn">EN</button>
+                        <div id="lang-dropdown" class="lang-dropdown">
+                            <div class="lang-option" data-lang="en">English (EN)</div>
+                            <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
+                            <div class="lang-option" data-lang="am">Amharic (AM)</div>
+                            <div class="lang-option" data-lang="af">Afrikaans (AF)</div>
+                            <div class="lang-option" data-lang="so">Somali (SO)</div>
+                            <div class="lang-option" data-lang="ti">Tigrinya (TI)</div>
+                            <div class="lang-option" data-lang="wo">Wolof (WO)</div>
+                        </div>
+                    </div>
+
+                    <!-- Shown when user is NOT authenticated -->
+                    <div class="auth-buttons" id="authButtons">
+                        <a href="login.html" class="btn btn-outline">Login</a>
+                        <a href="register.html" class="btn btn-primary">Register</a>
+                    </div>
+
+                    <!-- Shown when user IS authenticated -->
+                    <div class="user-profile" id="userProfile" style="display: none;">
+                        <div class="dropdown user-dropdown">
+                            <button class="user-btn" style="margin-left: 15px; background: none; border: none; padding: 0; outline: none;">
+                                <div class="initials-avatar">J</div>
+                            </button>
+                            <div class="dropdown-content user-dropdown-content">
+                                <a href="profile.html"><i class="fas fa-user" style="color: #1e3a8a;"></i> Profile</a>
+                                <a href="#"><i class="fas fa-cog" style="color: #1e3a8a;"></i> Settings</a>
+                                <div class="divider"></div>
+                                <a href="#" class="logout-link"><i class="fas fa-sign-out-alt" style="color: #1e3a8a;"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <!-- Auth buttons at top when not logged in -->
+                <li class="mobile-auth" id="mobileAuth">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </li>
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="#"><i class="fas fa-book" style="color: #1e3a8a;"></i> Guide</a></li>
+                <li class="mobile-profile"><a href="profile.html"><i class="fas fa-user" style="color: #1e3a8a;"></i> Profile</a></li>
+                <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt" style="color: #1e3a8a;"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header-section" style="background: #1a41ab; color: white; padding: 60px 20px; text-align: center; margin-bottom: 50px; border-radius: 15px;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 15px;">Get in Touch</h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9;">We'd love to hear from you. Reach out to us for any inquiries or support.</p>
+        </div>
+
+        <!-- Contact Information Cards -->
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt" style="color: #193ea4;"></i>
+                </div>
+                <h3>Main Office</h3>
+                <p>Addis Ababa, Ethiopia – Queue System HQ</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt" style="color: #193ea4;"></i>
+                </div>
+                <h3>Phone Number</h3>
+                <p>+251 9XX XXX XXX – Support Line Mon–Fri</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-headset" style="color: #193ea4;"></i>
+                </div>
+                <h3>Technical Support</h3>
+                <p>support@queuesystem.com</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-briefcase" style="color: #193ea4;"></i>
+                </div>
+                <h3>Business Inquiries</h3>
+                <p>business@queuesystem.com</p>
+            </div>
+        </div>
+
+        <!-- Contact Form and Info Section -->
+        <div class="contact-section">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2 class="form-title">Send us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="input-field" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="input-field" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">Organization (Optional)</label>
+                        <input type="text" id="organization" class="input-field" placeholder="Enter your organization">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" class="input-field" required>
+                            <option value="" disabled selected>Select a subject</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="business">Business Inquiry</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" class="input-field" placeholder="Enter your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2 class="info-title">Get in Touch</h2>
+                <p class="info-subtitle">Helping you manage queues efficiently and digitally.</p>
+                <p class="info-description">
+                    The Queue Management System helps government offices, hospitals, banks, and service centers reduce waiting times and improve service delivery through digital queue management. Our platform streamlines operations, enhances customer experience, and provides valuable insights through analytics.
+                </p>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const organization = document.getElementById('organization').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Check required fields
+            if (!fullName || !email || !subject || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // In a real application, you would send the data to a server here
+            // For this example, we'll just show a success message
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add focus effects to form fields
+        const inputFields = document.querySelectorAll('.input-field');
+        inputFields.forEach(field => {
+            field.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            field.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
