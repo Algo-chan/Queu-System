@@ -1873,14 +1873,8 @@ body.register-page {
     }
 }
 
-/* Custom media query to hide company name on very small screens */
-@media (max-width: 370px) {
-    .logo-text {
-        display: none !important;
-    }
-}
-
-@media (max-height: 600px) and (max-width: 768px) {
+/* Custom media query to hide company name on all mobile devices */
+@media (max-width: 767px) {
     .logo-text {
         display: none !important;
     }
