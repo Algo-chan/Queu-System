@@ -1879,3 +1879,15 @@ body.register-page {
         display: none !important;
     }
 }
+
+/* Position hamburger menu closer to profile picture on mobile */
+@media (max-width: 768px) {
+    .nav-right {
+        margin-left: 10px;
+    }
+    
+    .hamburger {
+        margin-right: 10px;
+    }
+}
+
