@@ -609,10 +609,11 @@
             <div class="nav-logo">
                 <a href="index.html">
                     <div class="logo-container">
-                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                            <i class="fas fa-list-ul text-white"></i>
-                        </div>
-                        <span class="logo-text hidden md:block">CIVIC QUEUE</span>
+                        <svg class="shield-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 40px;">
+                            <path d="M12 2L3 6V13C3 17.5 5.5 20 12 22C18.5 20 21 17.5 21 13V6L12 2Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12L11 14L15 10" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="logo-text hidden md:inline">CIVIC QUEUE</span>
                     </div>
                 </a>
             </div>
@@ -634,9 +635,9 @@
                     </div>
 
                     <!-- User Profile with Initials -->
-                    <div class="user-profile" id="userProfile">
+                    <div class="user-profile hidden md:block" id="userProfile">
                         <div class="dropdown user-dropdown">
-                            <button class="user-btn hidden md:block" style="margin-left: 15px; background: none; border: none; padding: 0; outline: none;">
+                            <button class="user-btn" style="margin-left: 15px; background: none; border: none; padding: 0; outline: none;">
                                 <div class="initials-avatar">J</div>
                             </button>
                             <div class="dropdown-content user-dropdown-content">
@@ -665,9 +666,10 @@
                 <!-- Company name in mobile menu -->
                 <li class="mobile-company-name">
                     <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                            <i class="fas fa-list-ul text-white"></i>
-                        </div>
+                        <svg class="shield-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 32px; height: 32px;">
+                            <path d="M12 2L3 6V13C3 17.5 5.5 20 12 22C18.5 20 21 17.5 21 13V6L12 2Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12L11 14L15 10" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                         <span class="font-bold">CIVIC QUEUE</span>
                     </div>
                 </li>
@@ -977,71 +979,73 @@
             }
         });
 
-        // Toggle mobile menu
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
-                mobileMenu.classList.toggle('show');
-            });
-
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.hamburger') && !event.target.closest('.mobile-menu')) {
-                    hamburger.classList.remove('active');
-                    mobileMenu.classList.remove('show');
-                }
-            });
-        }
-
         // Language switcher functionality
-        const langButton = document.getElementById('lang-button');
-        const langDropdown = document.getElementById('lang-dropdown');
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
 
-        if (langButton && langDropdown) {
-            langButton.addEventListener('click', function() {
-                langDropdown.classList.toggle('show');
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    mobileMenu.classList.toggle('show');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.hamburger') && !event.target.closest('.mobile-menu')) {
+                        hamburger.classList.remove('active');
+                        mobileMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // Language switcher functionality
+            const langButton = document.getElementById('lang-button');
+            const langDropdown = document.getElementById('lang-dropdown');
+
+            if (langButton && langDropdown) {
+                langButton.addEventListener('click', function() {
+                    langDropdown.classList.toggle('show');
+                });
+            }
+
+            // Handle language selection
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    document.getElementById('lang-button').textContent = this.textContent.split('(')[0].trim();
+                    document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
+                    langDropdown.classList.remove('show');
+                    document.getElementById('mobile-lang-dropdown').classList.remove('show');
+
+                    // In a real app, you would implement language switching logic here
+                    console.log('Language switched to:', selectedLang);
+                });
             });
-        }
 
-        // Handle language selection
-        document.querySelectorAll('.lang-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const selectedLang = this.getAttribute('data-lang');
-                document.getElementById('lang-button').textContent = this.textContent.split('(')[0].trim();
-                document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
-                langDropdown.classList.remove('show');
-                document.getElementById('mobile-lang-dropdown').classList.remove('show');
+            // Mobile language switcher functionality
+            const mobileLangButton = document.getElementById('mobile-lang-button');
+            const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
 
-                // In a real app, you would implement language switching logic here
-                console.log('Language switched to:', selectedLang);
-            });
-        });
-        
-        // Mobile language switcher functionality
-        const mobileLangButton = document.getElementById('mobile-lang-button');
-        const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+            if (mobileLangButton && mobileLangDropdown) {
+                mobileLangButton.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent closing the mobile menu
+                    mobileLangDropdown.classList.toggle('show');
+                });
+            }
 
-        if (mobileLangButton && mobileLangDropdown) {
-            mobileLangButton.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent closing the mobile menu
-                mobileLangDropdown.classList.toggle('show');
-            });
-        }
-        
-        // Handle mobile language selection
-        document.querySelectorAll('.mobile-language .lang-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const selectedLang = this.getAttribute('data-lang');
-                document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
-                document.getElementById('lang-button').textContent = this.textContent.split('(')[1].split(')')[0]; // Get abbreviation
-                document.getElementById('mobile-lang-dropdown').classList.remove('show');
-                document.getElementById('lang-dropdown').classList.remove('show');
+            // Handle mobile language selection
+            document.querySelectorAll('.mobile-language .lang-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
+                    document.getElementById('lang-button').textContent = this.textContent.split('(')[1].split(')')[0]; // Get abbreviation
+                    document.getElementById('mobile-lang-dropdown').classList.remove('show');
+                    document.getElementById('lang-dropdown').classList.remove('show');
 
-                // In a real app, you would implement language switching logic here
-                console.log('Mobile language switched to:', selectedLang);
+                    // In a real app, you would implement language switching logic here
+                    console.log('Mobile language switched to:', selectedLang);
+                });
             });
         });
 
@@ -1064,8 +1068,77 @@
         // updateAuthState(false); // Guest view
         // updateAuthState(true);  // Authenticated view
 
-        // Digital Ticket Generation Functions - wrapped in DOM ready to ensure elements exist
+        // Digital Ticket Generation Functions and Mobile Menu Functions - wrapped in DOM ready to ensure elements exist
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu functionality
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    mobileMenu.classList.toggle('show');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.hamburger') && !event.target.closest('.mobile-menu')) {
+                        hamburger.classList.remove('active');
+                        mobileMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // Language switcher functionality
+            const langButton = document.getElementById('lang-button');
+            const langDropdown = document.getElementById('lang-dropdown');
+
+            if (langButton && langDropdown) {
+                langButton.addEventListener('click', function() {
+                    langDropdown.classList.toggle('show');
+                });
+            }
+
+            // Handle language selection
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    document.getElementById('lang-button').textContent = this.textContent.split('(')[0].trim();
+                    document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
+                    langDropdown.classList.remove('show');
+                    document.getElementById('mobile-lang-dropdown').classList.remove('show');
+
+                    // In a real app, you would implement language switching logic here
+                    console.log('Language switched to:', selectedLang);
+                });
+            });
+
+            // Mobile language switcher functionality
+            const mobileLangButton = document.getElementById('mobile-lang-button');
+            const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+
+            if (mobileLangButton && mobileLangDropdown) {
+                mobileLangButton.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent closing the mobile menu
+                    mobileLangDropdown.classList.toggle('show');
+                });
+            }
+
+            // Handle mobile language selection
+            document.querySelectorAll('.mobile-language .lang-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
+                    document.getElementById('lang-button').textContent = this.textContent.split('(')[1].split(')')[0]; // Get abbreviation
+                    document.getElementById('mobile-lang-dropdown').classList.remove('show');
+                    document.getElementById('lang-dropdown').classList.remove('show');
+
+                    // In a real app, you would implement language switching logic here
+                    console.log('Mobile language switched to:', selectedLang);
+                });
+            });
+
+            // Digital Ticket Generation Functions
             window.openTicketModal = function() {
                 var modal = document.getElementById('ticketModal');
                 if (modal) {
@@ -1098,14 +1171,14 @@
                     // Hide modal and show ticket page
                     var modal = document.getElementById('ticketModal');
                     var ticketPage = document.getElementById('ticketPage');
-                    
+
                     if (modal) modal.style.display = 'none';
                     if (ticketPage) ticketPage.style.display = 'block';
 
                     // Update ticket information
                     var serviceDisplay = document.getElementById('selectedServiceDisplay');
                     var ticketService = document.getElementById('ticketService');
-                    
+
                     if (serviceDisplay && ticketService) {
                         ticketService.textContent = serviceDisplay.textContent;
                     }
