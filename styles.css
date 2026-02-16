@@ -1872,3 +1872,16 @@ body.register-page {
         text-align: left;
     }
 }
+
+/* Custom media query to hide company name on very small screens */
+@media (max-width: 370px) {
+    .logo-text {
+        display: none !important;
+    }
+}
+
+@media (max-height: 600px) and (max-width: 768px) {
+    .logo-text {
+        display: none !important;
+    }
+}
