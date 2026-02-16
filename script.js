@@ -140,11 +140,59 @@ const translations = {
     }
 };
 
+// Desktop Language Switcher Functions (globally accessible)
+function toggleDesktopLanguage() {
+    const dropdown = document.getElementById('desktopLangDropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('show');
+    }
+}
+
+function selectLanguage(lang) {
+    // Update the displayed language
+    const langText = document.getElementById('desktopLangText');
+    if (langText) {
+        langText.textContent = lang.toUpperCase();
+    }
+
+    // Store selected language
+    localStorage.setItem('selectedLanguage', lang);
+
+    // Apply translations
+    applyTranslations(lang);
+
+    // Close dropdown
+    const dropdown = document.getElementById('desktopLangDropdown');
+    if (dropdown) {
+        dropdown.classList.remove('show');
+    }
+}
+
+function applyTranslations(lang) {
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+}
+
 // Initialize language switcher and navbar functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Check authentication state on page load
     checkAuthStateOnLoad();
-    
+
+    // Initialize language on page load
+    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    const langText = document.getElementById('desktopLangText');
+    if (langText) {
+        langText.textContent = savedLang.toUpperCase();
+    }
+    if (typeof translations !== 'undefined') {
+        applyTranslations(savedLang);
+    }
+
     // Language switcher functionality
     const langButton = document.getElementById('lang-button');
     const langDropdown = document.getElementById('lang-dropdown');
@@ -397,11 +445,26 @@ document.addEventListener('DOMContentLoaded', function() {
         // Redirect to home page
         window.location.href = 'index.html';
     }
-    
+
     // Handle login event (this would be called from login page)
     window.handleLoginSuccess = function() {
         isAuthenticated = true;
         localStorage.setItem('isLoggedIn', 'true'); // Store login state
         updateAuthState();
     };
+});
+
+// Close language dropdown when clicking outside (global listener)
+document.addEventListener('click', function(event) {
+    const desktopSwitcher = document.querySelector('.language-switcher-desktop');
+    const desktopDropdown = document.getElementById('desktopLangDropdown');
+    const mobileSwitcher = document.querySelector('.language-switcher');
+    const mobileDropdown = document.getElementById('mobile-lang-dropdown');
+
+    if (desktopSwitcher && !desktopSwitcher.contains(event.target)) {
+        if (desktopDropdown) desktopDropdown.classList.remove('show');
+    }
+    if (mobileSwitcher && !mobileSwitcher.contains(event.target)) {
+        if (mobileDropdown) mobileDropdown.classList.remove('show');
+    }
 });

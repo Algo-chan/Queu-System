@@ -82,10 +82,8 @@ body {
     padding: 0;
 }
 
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 32px;
+.nav-menu li {
+    display: inline-block;
 }
 
 .nav-link {
@@ -93,6 +91,7 @@ body {
     color: #1F2937;
     font-weight: 500;
     transition: color 0.3s ease;
+    padding: 8px 0;
 }
 
 .nav-link:hover {
@@ -426,6 +425,61 @@ body {
 }
 
 .lang-option:hover {
+    background: #F3F4F6;
+}
+
+/* Desktop Language Switcher Styles */
+.language-switcher-desktop {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-btn-desktop {
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.lang-btn-desktop:hover {
+    background: #F3F4F6;
+}
+
+.lang-dropdown-desktop {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    padding: 8px 0;
+    min-width: 180px;
+    z-index: 1000;
+    animation: fadeInSlideDown 0.3s ease forwards;
+}
+
+.lang-dropdown-desktop.show {
+    display: block;
+}
+
+.lang-dropdown-desktop .lang-option {
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: block;
+    text-decoration: none;
+    color: #1F2937;
+}
+
+.lang-dropdown-desktop .lang-option:hover {
     background: #F3F4F6;
 }
 
@@ -1781,13 +1835,17 @@ body.register-page {
     .nav-menu {
         display: none;
     }
-    
+
     .nav-center {
         display: none;
     }
-    
+
     .hamburger {
         display: flex;
+    }
+
+    .language-switcher-desktop {
+        display: none;
     }
     
     .mobile-menu {

@@ -359,6 +359,17 @@
                 </a>
             </div>
 
+            <!-- Center Navigation - Desktop/iPad -->
+            <div class="nav-center">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link" data-translate="home">Home</a></li>
+                    <li><a href="services.html" class="nav-link" data-translate="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-translate="help">Help</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+
             <!-- Mobile Menu Button -->
             <div class="hamburger">
                 <span class="bar"></span>
@@ -369,6 +380,17 @@
             <!-- Authentication Buttons (on far right) -->
             <div class="nav-right">
                 <div class="auth-and-lang-container">
+                    <!-- Language Switcher (Desktop/iPad) -->
+                    <div class="language-switcher-desktop">
+                        <button class="lang-btn-desktop" onclick="toggleDesktopLanguage()">
+                            <i class="fas fa-globe"></i> <span id="desktopLangText">EN</span>
+                        </button>
+                        <div class="lang-dropdown-desktop" id="desktopLangDropdown">
+                            <div class="lang-option" onclick="selectLanguage('en')">English (EN)</div>
+                            <div class="lang-option" onclick="selectLanguage('am')">Amharic (AM)</div>
+                        </div>
+                    </div>
+
                     <!-- Shown when user is NOT authenticated -->
                     <div class="auth-buttons hidden md:block" id="authButtons">
                         <a href="login.html" class="btn btn-outline">Login</a>
@@ -414,12 +436,7 @@
                         <button id="mobile-lang-button" class="lang-btn">Language: EN</button>
                         <div id="mobile-lang-dropdown" class="lang-dropdown">
                             <div class="lang-option" data-lang="en">English (EN)</div>
-                            <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
                             <div class="lang-option" data-lang="am">Amharic (AM)</div>
-                            <div class="lang-option" data-lang="af">Afrikaans (AF)</div>
-                            <div class="lang-option" data-lang="so">Somali (SO)</div>
-                            <div class="lang-option" data-lang="ti">Tigrinya (TI)</div>
-                            <div class="lang-option" data-lang="wo">Wolof (WO)</div>
                         </div>
                     </div>
                 </li>

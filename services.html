@@ -587,6 +587,269 @@
             transform: translateY(-2px);
         }
 
+        /* Desktop Language Switcher Styles */
+        .language-switcher-desktop {
+            position: relative;
+            display: inline-block;
+            margin-right: 12px;
+        }
+
+        .lang-btn-desktop {
+            background: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        .lang-btn-desktop:hover {
+            background: #F3F4F6;
+        }
+
+        .lang-dropdown-desktop {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            padding: 8px 0;
+            min-width: 180px;
+            z-index: 1000;
+            animation: fadeInSlideDown 0.3s ease forwards;
+        }
+
+        .lang-dropdown-desktop.show {
+            display: block;
+        }
+
+        .lang-dropdown-desktop .lang-option {
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            display: block;
+            text-decoration: none;
+            color: #1F2937;
+        }
+
+        .lang-dropdown-desktop .lang-option:hover {
+            background: #F3F4F6;
+        }
+
+        @keyframes fadeInSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* My Tickets Button & Dropdown Styles */
+        .my-tickets-btn {
+            background: #2F6FD6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .my-tickets-btn:hover {
+            background: #1E3C72;
+            transform: translateY(-2px);
+        }
+
+        .my-tickets-dropdown {
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            width: 400px;
+            max-height: 500px;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .my-tickets-content {
+            padding: 0;
+        }
+
+        .my-tickets-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #E5E7EB;
+            background: linear-gradient(135deg, #2F6FD6, #1E3C72);
+            border-radius: 12px 12px 0 0;
+            color: white;
+        }
+
+        .my-tickets-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .close-my-tickets {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-my-tickets:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .my-tickets-body {
+            padding: 20px;
+        }
+
+        .ticket-item-card {
+            background: #F9FAFB;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .ticket-item-card:hover {
+            background: #F3F4F6;
+            border-color: #2F6FD6;
+            transform: translateX(4px);
+        }
+
+        .ticket-item-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .ticket-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .ticket-item-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2F6FD6;
+        }
+
+        .ticket-item-status {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-waiting {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-serving {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .ticket-item-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .ticket-item-detail-label {
+            color: #6B7280;
+            font-weight: 500;
+        }
+
+        .ticket-item-detail-value {
+            color: #1F2937;
+            font-weight: 600;
+        }
+
+        .track-ticket-btn {
+            width: 100%;
+            padding: 10px;
+            background: #2F6FD6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .track-ticket-btn:hover {
+            background: #1E3C72;
+        }
+
+        .no-tickets {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6B7280;
+        }
+
+        .no-tickets i {
+            font-size: 48px;
+            color: #D1D5DB;
+            margin-bottom: 16px;
+        }
+
         .initials-avatar {
             width: 40px;
             height: 40px;
@@ -618,6 +881,17 @@
                 </a>
             </div>
 
+            <!-- Center Navigation - Desktop/iPad -->
+            <div class="nav-center">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link" data-translate="home">Home</a></li>
+                    <li><a href="services.html" class="nav-link" data-translate="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-translate="help">Help</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+
             <!-- Mobile Menu Button -->
             <div class="hamburger">
                 <span class="bar"></span>
@@ -628,6 +902,22 @@
             <!-- User Profile (on far right) -->
             <div class="nav-right">
                 <div class="auth-and-lang-container">
+                    <!-- Language Switcher (Desktop/iPad) -->
+                    <div class="language-switcher-desktop">
+                        <button class="lang-btn-desktop" onclick="toggleDesktopLanguage()">
+                            <i class="fas fa-globe"></i> <span id="desktopLangText">EN</span>
+                        </button>
+                        <div class="lang-dropdown-desktop" id="desktopLangDropdown">
+                            <div class="lang-option" onclick="selectLanguage('en')">English (EN)</div>
+                            <div class="lang-option" onclick="selectLanguage('am')">Amharic (AM)</div>
+                        </div>
+                    </div>
+
+                    <!-- My Tickets Button -->
+                    <button class="btn btn-primary my-tickets-btn" onclick="toggleMyTicketsDropdown()">
+                        <i class="fas fa-ticket-alt"></i> My Tickets
+                    </button>
+
                     <!-- User Profile with Initials -->
                     <div class="user-profile hidden md:block" id="userProfile">
                         <div class="dropdown user-dropdown">
@@ -669,12 +959,7 @@
                         <button id="mobile-lang-button" class="lang-btn">Language: EN</button>
                         <div id="mobile-lang-dropdown" class="lang-dropdown">
                             <div class="lang-option" data-lang="en">English (EN)</div>
-                            <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
                             <div class="lang-option" data-lang="am">Amharic (AM)</div>
-                            <div class="lang-option" data-lang="af">Afrikaans (AF)</div>
-                            <div class="lang-option" data-lang="so">Somali (SO)</div>
-                            <div class="lang-option" data-lang="ti">Tigrinya (TI)</div>
-                            <div class="lang-option" data-lang="wo">Wolof (WO)</div>
                         </div>
                     </div>
                 </li>
@@ -684,6 +969,19 @@
             </ul>
         </div>
     </nav>
+
+    <!-- My Tickets Dropdown Panel -->
+    <div id="myTicketsDropdown" class="my-tickets-dropdown">
+        <div class="my-tickets-content">
+            <div class="my-tickets-header">
+                <h3>My Generated Tickets</h3>
+                <button class="close-my-tickets" onclick="toggleMyTicketsDropdown()">&times;</button>
+            </div>
+            <div class="my-tickets-body" id="myTicketsList">
+                <!-- Tickets will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="py-16 px-6 bg-gray-50">
@@ -695,7 +993,6 @@
                 Manage customers efficiently, reduce waiting chaos, and improve service experience.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-
                 <button class="btn-outline px-8 py-4 text-lg" onclick="openTicketModal()">Generate Ticket</button>
             </div>
         </div>
@@ -1917,15 +2214,29 @@
             .nav-menu {
                 display: none;
             }
-            
+
             .nav-center {
                 display: none;
             }
-            
+
             .hamburger {
                 display: flex;
             }
-            
+
+            .language-switcher-desktop {
+                display: none;
+            }
+
+            .my-tickets-btn {
+                display: none;
+            }
+
+            .my-tickets-dropdown {
+                right: 16px;
+                width: calc(100% - 32px);
+                top: 70px;
+            }
+
             .mobile-menu {
                 display: none;
                 position: absolute;
@@ -1937,24 +2248,24 @@
                 padding: 20px 0;
                 z-index: 999;
             }
-            
+
             .mobile-menu.show {
                 display: block;
             }
-            
+
             .mobile-menu ul {
                 list-style: none;
                 padding: 0;
                 margin: 0;
             }
-            
+
             .mobile-company-name {
                 padding: 10px 24px;
                 border-bottom: 1px solid #E5E7EB;
                 display: flex;
                 align-items: center;
             }
-            
+
             .mobile-auth {
                 display: flex;
                 flex-direction: column;
@@ -1962,16 +2273,16 @@
                 padding: 15px 24px;
                 border-bottom: 1px solid #E5E7EB;
             }
-            
+
             .mobile-menu li {
                 padding: 10px 24px;
                 border-bottom: 1px solid #E5E7EB;
             }
-            
+
             .mobile-menu li:last-child {
                 border-bottom: none;
             }
-            
+
             .mobile-menu a {
                 text-decoration: none;
                 color: #1F2937;
@@ -1979,30 +2290,30 @@
                 display: block;
                 transition: color 0.3s ease;
             }
-            
+
             .mobile-menu a:hover {
                 color: #2F6FD6;
             }
-            
+
             .mobile-logout {
                 margin-top: 10px;
                 padding-top: 10px;
                 border-top: 1px solid #E5E7EB;
             }
-            
+
             .mobile-logout a {
                 color: #EF4444 !important;
             }
-            
+
             .mobile-language {
                 padding: 10px 24px;
                 border-bottom: 1px solid #E5E7EB;
             }
-            
+
             .mobile-language .language-switcher {
                 width: 100%;
             }
-            
+
             .mobile-language .lang-btn {
                 width: 100%;
                 text-align: left;
@@ -2058,8 +2369,99 @@
     <div id="notification" class="notification">
         Your ticket status has changed to SERVING!
     </div>
-    
+
     <script>
+        // Sample tickets data (in production, this would come from a backend)
+        const userTickets = [
+            { number: 'A118', service: 'Health Services', status: 'Waiting', position: 13, peopleAhead: 12, waitTime: '25 mins' },
+            { number: 'B45', service: 'Government Offices', status: 'Waiting', position: 8, peopleAhead: 7, waitTime: '15 mins' },
+            { number: 'C23', service: 'Tax Services', status: 'Completed', position: 0, peopleAhead: 0, waitTime: '0 mins' }
+        ];
+
+        // Toggle My Tickets Dropdown
+        function toggleMyTicketsDropdown() {
+            const dropdown = document.getElementById('myTicketsDropdown');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'block';
+                displayMyTickets();
+            }
+        }
+
+        // Display My Tickets in dropdown
+        function displayMyTickets() {
+            const ticketsList = document.getElementById('myTicketsList');
+
+            if (userTickets.length === 0) {
+                ticketsList.innerHTML = `
+                    <div class="no-tickets">
+                        <i class="fas fa-ticket-alt"></i>
+                        <p>No tickets generated yet</p>
+                        <p style="font-size: 14px; margin-top: 8px;">Generate a ticket to see it here</p>
+                    </div>
+                `;
+                return;
+            }
+
+            ticketsList.innerHTML = '';
+            userTickets.forEach(ticket => {
+                const ticketCard = document.createElement('div');
+                ticketCard.className = 'ticket-item-card';
+                ticketCard.innerHTML = `
+                    <div class="ticket-item-header">
+                        <span class="ticket-item-number">${ticket.number}</span>
+                        <span class="ticket-item-status status-${ticket.status.toLowerCase()}">${ticket.status}</span>
+                    </div>
+                    <div class="ticket-item-detail">
+                        <span class="ticket-item-detail-label">Service:</span>
+                        <span class="ticket-item-detail-value">${ticket.service}</span>
+                    </div>
+                    ${ticket.status !== 'Completed' ? `
+                    <div class="ticket-item-detail">
+                        <span class="ticket-item-detail-label">Position:</span>
+                        <span class="ticket-item-detail-value">${ticket.position} of 15</span>
+                    </div>
+                    <div class="ticket-item-detail">
+                        <span class="ticket-item-detail-label">Wait Time:</span>
+                        <span class="ticket-item-detail-value">${ticket.waitTime}</span>
+                    </div>
+                    ` : ''}
+                    <button class="track-ticket-btn" onclick="openQueueTrackerFromList('${ticket.number}', '${ticket.service}')">
+                        <i class="fas fa-sync-alt"></i> Track Ticket
+                    </button>
+                `;
+                ticketsList.appendChild(ticketCard);
+            });
+        }
+
+        // Open queue tracker from ticket list
+        function openQueueTrackerFromList(ticketNumber, service) {
+            document.getElementById('queueTracker').style.display = 'block';
+            document.getElementById('trackerTicketNumber').textContent = ticketNumber;
+            document.getElementById('trackerService').textContent = service;
+            // Update other tracker details based on ticket
+            const ticket = userTickets.find(t => t.number === ticketNumber);
+            if (ticket) {
+                document.getElementById('trackerPosition').textContent = ticket.position + ' of 15';
+                document.getElementById('trackerPeopleAhead').textContent = ticket.peopleAhead;
+                document.getElementById('trackerWaitTime').textContent = ticket.waitTime;
+                document.getElementById('trackerStatus').textContent = ticket.status.toUpperCase();
+            }
+            startRealTimeUpdates();
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('myTicketsDropdown');
+            const button = document.querySelector('.my-tickets-btn');
+            if (dropdown && dropdown.style.display === 'block' && 
+                !dropdown.contains(event.target) && 
+                !button.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
         // Real-Time Queue Tracker Functions
         function openQueueTracker() {
             document.getElementById('queueTracker').style.display = 'block';
