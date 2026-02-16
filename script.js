@@ -177,12 +177,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Update button text to show selected language abbreviation
                 langButton.textContent = this.textContent.split('(')[1].split(')')[0];
+                
+                // Also update mobile language button if it exists
+                const mobileLangButton = document.getElementById('mobile-lang-button');
+                if (mobileLangButton) {
+                    mobileLangButton.textContent = 'Language: ' + this.textContent.split('(')[0].trim();
+                }
 
                 // Save selected language to localStorage
                 localStorage.setItem('selectedLanguage', selectedLang);
 
                 // Close dropdown after selection
                 langDropdown.classList.remove('show');
+                
+                // Also close mobile dropdown if it exists
+                const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+                if (mobileLangDropdown) {
+                    mobileLangDropdown.classList.remove('show');
+                }
+            });
+        });
+    }
+    
+    // Mobile language switcher functionality
+    const mobileLangButton = document.getElementById('mobile-lang-button');
+    const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+    const mobileLangOptions = document.querySelectorAll('.mobile-language .lang-option');
+
+    if (mobileLangButton && mobileLangDropdown && mobileLangOptions.length > 0) {
+        mobileLangButton.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent closing the mobile menu
+            mobileLangDropdown.classList.toggle('show');
+        });
+
+        // Close mobile language dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (mobileLangButton && !mobileLangButton.contains(e.target) && 
+                mobileLangDropdown && !mobileLangDropdown.contains(e.target)) {
+                mobileLangDropdown.classList.remove('show');
+            }
+        });
+
+        // Handle mobile language selection
+        mobileLangOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const selectedLang = this.getAttribute('data-lang');
+                updateLanguage(selectedLang);
+
+                // Update mobile button text
+                mobileLangButton.textContent = 'Language: ' + this.textContent.split('(')[0].trim();
+                
+                // Also update desktop language button
+                if (langButton) {
+                    langButton.textContent = this.textContent.split('(')[1].split(')')[0]; // Get abbreviation
+                }
+
+                // Save selected language to localStorage
+                localStorage.setItem('selectedLanguage', selectedLang);
+
+                // Close dropdown after selection
+                mobileLangDropdown.classList.remove('show');
+                
+                // Also close desktop dropdown
+                if (langDropdown) {
+                    langDropdown.classList.remove('show');
+                }
             });
         });
     }

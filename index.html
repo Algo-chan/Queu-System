@@ -26,7 +26,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- Logo on far left -->
+            <!-- Logo on far left - only show logo on mobile -->
             <div class="nav-logo">
                 <a href="index.html">
                     <div class="logo-container">
@@ -34,45 +34,16 @@
                             <path d="M12 2L3 6V13C3 17.5 5.5 20 12 22C18.5 20 21 17.5 21 13V6L12 2Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M9 12L11 14L15 10" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <span class="logo-text">CITIZEN SIDE</span>
+                        <span class="logo-text hidden md:block">CITIZEN SIDE</span>
                     </div>
                 </a>
-            </div>
-
-            <!-- Primary navigation links -->
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-translate="home">Home</a>
-                <a href="services.html" class="nav-link" data-translate="services">Services</a>
-                <a href="#" class="nav-link" data-translate="help">Help</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                
-                <!-- Dropdown trigger with arrow icon -->
-                <div class="dropdown">
-                    <button class="dropdown-trigger">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <!-- Shown when user is authenticated -->
-                        <div class="authenticated-content" style="display: none;">
-                            <a href="#"><i class="fas fa-book"></i> Guide</a>
-                            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-                            <a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        </div>
-                        
-                        <!-- Shown when user is not authenticated -->
-                        <div class="guest-content">
-                            <a href="#"><i class="fas fa-book"></i> Guide</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Language Switcher and Authentication Buttons (on far right) -->
             <div class="nav-right">
                 <div class="auth-and-lang-container">
                     <div class="language-switcher">
-                        <button id="lang-button" class="lang-btn">EN</button>
+                        <button id="lang-button" class="lang-btn hidden md:block">EN</button>
                         <div id="lang-dropdown" class="lang-dropdown">
                             <div class="lang-option" data-lang="en">English (EN)</div>
                             <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
@@ -83,15 +54,15 @@
                             <div class="lang-option" data-lang="wo">Wolof (WO)</div>
                         </div>
                     </div>
-                    
+
                     <!-- Shown when user is NOT authenticated -->
-                    <div class="auth-buttons" id="authButtons">
+                    <div class="auth-buttons hidden md:block" id="authButtons">
                         <a href="login.html" class="btn btn-outline">Login</a>
                         <a href="register.html" class="btn btn-primary">Register</a>
                     </div>
-                    
+
                     <!-- Shown when user IS authenticated -->
-                    <div class="user-profile" id="userProfile" style="display: none;">
+                    <div class="user-profile hidden md:block" id="userProfile" style="display: none;">
                         <div class="dropdown user-dropdown">
                             <button class="user-btn" style="margin-left: 15px; background: none; border: none; padding: 0; outline: none;">
                                 <div class="initials-avatar">J</div>
@@ -114,21 +85,49 @@
                 <span class="bar"></span>
             </div>
         </div>
-        
-        <!-- Mobile Menu -->
+
+        <!-- Mobile Menu - now contains all navigation items -->
         <div class="mobile-menu" id="mobileMenu">
             <ul>
+                <!-- Company name in mobile menu -->
+                <li class="mobile-company-name">
+                    <div class="flex items-center gap-2">
+                        <svg class="shield-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 32px; height: 32px;">
+                            <path d="M12 2L3 6V13C3 17.5 5.5 20 12 22C18.5 20 21 17.5 21 13V6L12 2Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12L11 14L15 10" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="font-bold">CITIZEN SIDE</span>
+                    </div>
+                </li>
+                
                 <!-- Auth buttons at top when not logged in -->
                 <li class="mobile-auth" id="mobileAuth">
                     <a href="login.html" class="btn btn-outline">Login</a>
                     <a href="register.html" class="btn btn-primary">Register</a>
                 </li>
-                
+
                 <li><a href="index.html" data-translate="home">Home</a></li>
                 <li><a href="services.html" data-translate="services">Services</a></li>
                 <li><a href="#" data-translate="help">Help</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                
+                <!-- Language selector in mobile menu -->
+                <li class="mobile-language">
+                    <div class="language-switcher">
+                        <button id="mobile-lang-button" class="lang-btn">Language: EN</button>
+                        <div id="mobile-lang-dropdown" class="lang-dropdown">
+                            <div class="lang-option" data-lang="en">English (EN)</div>
+                            <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
+                            <div class="lang-option" data-lang="am">Amharic (AM)</div>
+                            <div class="lang-option" data-lang="af">Afrikaans (AF)</div>
+                            <div class="lang-option" data-lang="so">Somali (SO)</div>
+                            <div class="lang-option" data-lang="ti">Tigrinya (TI)</div>
+                            <div class="lang-option" data-lang="wo">Wolof (WO)</div>
+                        </div>
+                    </div>
+                </li>
+                
                 <li><a href="#"><i class="fas fa-book"></i> Guide</a></li>
                 <li class="mobile-profile"><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
                 <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>

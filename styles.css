@@ -1775,3 +1775,100 @@ body.register-page {
         gap: 15px;
     }
 }
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-center {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        padding: 20px 0;
+        z-index: 999;
+    }
+    
+    .mobile-menu.show {
+        display: block;
+    }
+    
+    .mobile-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .mobile-company-name {
+        padding: 10px 24px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        align-items: center;
+    }
+    
+    .mobile-auth {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 24px;
+        border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .mobile-menu li {
+        padding: 10px 24px;
+        border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .mobile-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .mobile-menu a {
+        text-decoration: none;
+        color: #1F2937;
+        font-weight: 500;
+        display: block;
+        transition: color 0.3s ease;
+    }
+    
+    .mobile-menu a:hover {
+        color: #2F6FD6;
+    }
+    
+    .mobile-logout {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #E5E7EB;
+    }
+    
+    .mobile-logout a {
+        color: #EF4444 !important;
+    }
+    
+    .mobile-language {
+        padding: 10px 24px;
+        border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .mobile-language .language-switcher {
+        width: 100%;
+    }
+    
+    .mobile-language .lang-btn {
+        width: 100%;
+        text-align: left;
+    }
+}

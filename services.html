@@ -605,53 +605,23 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- Logo on far left -->
+            <!-- Logo on far left - only show logo on mobile -->
             <div class="nav-logo">
                 <a href="index.html">
                     <div class="logo-container">
                         <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
                             <i class="fas fa-list-ul text-white"></i>
                         </div>
-                        <span class="logo-text">CIVIC QUEUE</span>
+                        <span class="logo-text hidden md:block">CIVIC QUEUE</span>
                     </div>
                 </a>
-            </div>
-
-            <!-- Primary navigation links -->
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="#" class="nav-link">Help</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="#" class="nav-link" onclick="openTicketsListPage(); return false;">My Tickets</a>
-
-                <!-- Dropdown trigger with arrow icon -->
-                <div class="dropdown">
-                    <button class="dropdown-trigger">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <!-- Shown when user is authenticated -->
-                        <div class="authenticated-content" style="display: none;">
-                            <a href="#"><i class="fas fa-book"></i> Guide</a>
-                            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-                            <a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        </div>
-
-                        <!-- Shown when user is not authenticated -->
-                        <div class="guest-content">
-                            <a href="#"><i class="fas fa-book"></i> Guide</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Language Switcher and User Profile (on far right) -->
             <div class="nav-right">
                 <div class="auth-and-lang-container">
                     <div class="language-switcher">
-                        <button id="lang-button" class="lang-btn">EN</button>
+                        <button id="lang-button" class="lang-btn hidden md:block">EN</button>
                         <div id="lang-dropdown" class="lang-dropdown">
                             <div class="lang-option" data-lang="en">English (EN)</div>
                             <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
@@ -666,7 +636,7 @@
                     <!-- User Profile with Initials -->
                     <div class="user-profile" id="userProfile">
                         <div class="dropdown user-dropdown">
-                            <button class="user-btn" style="margin-left: 15px; background: none; border: none; padding: 0; outline: none;">
+                            <button class="user-btn hidden md:block" style="margin-left: 15px; background: none; border: none; padding: 0; outline: none;">
                                 <div class="initials-avatar">J</div>
                             </button>
                             <div class="dropdown-content user-dropdown-content">
@@ -689,9 +659,19 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu - now contains all navigation items -->
         <div class="mobile-menu" id="mobileMenu">
             <ul>
+                <!-- Company name in mobile menu -->
+                <li class="mobile-company-name">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-list-ul text-white"></i>
+                        </div>
+                        <span class="font-bold">CIVIC QUEUE</span>
+                    </div>
+                </li>
+                
                 <!-- Auth buttons at top when not logged in -->
                 <li class="mobile-auth" id="mobileAuth">
                     <a href="login.html" class="btn btn-outline">Login</a>
@@ -704,6 +684,23 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="#" onclick="openTicketsListPage(); return false;">My Tickets</a></li>
+                
+                <!-- Language selector in mobile menu -->
+                <li class="mobile-language">
+                    <div class="language-switcher">
+                        <button id="mobile-lang-button" class="lang-btn">Language: EN</button>
+                        <div id="mobile-lang-dropdown" class="lang-dropdown">
+                            <div class="lang-option" data-lang="en">English (EN)</div>
+                            <div class="lang-option" data-lang="or">Afaan Oromo (OR)</div>
+                            <div class="lang-option" data-lang="am">Amharic (AM)</div>
+                            <div class="lang-option" data-lang="af">Afrikaans (AF)</div>
+                            <div class="lang-option" data-lang="so">Somali (SO)</div>
+                            <div class="lang-option" data-lang="ti">Tigrinya (TI)</div>
+                            <div class="lang-option" data-lang="wo">Wolof (WO)</div>
+                        </div>
+                    </div>
+                </li>
+                
                 <li><a href="#"><i class="fas fa-book"></i> Guide</a></li>
                 <li class="mobile-profile"><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
                 <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -712,7 +709,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="py-16 px-6">
+    <section class="py-16 px-6 bg-gray-50">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
                 Smart Digital Queue Management System
@@ -721,8 +718,8 @@
                 Manage customers efficiently, reduce waiting chaos, and improve service experience.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="btn-primary px-8 py-4 text-lg">Get Started</button>
-                <button class="btn-outline px-8 py-4 text-lg">Generate Ticket</button>
+
+                <button class="btn-outline px-8 py-4 text-lg" onclick="openTicketModal()">Generate Ticket</button>
             </div>
         </div>
     </section>
@@ -1014,10 +1011,37 @@
             option.addEventListener('click', function() {
                 const selectedLang = this.getAttribute('data-lang');
                 document.getElementById('lang-button').textContent = this.textContent.split('(')[0].trim();
+                document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
                 langDropdown.classList.remove('show');
+                document.getElementById('mobile-lang-dropdown').classList.remove('show');
 
                 // In a real app, you would implement language switching logic here
                 console.log('Language switched to:', selectedLang);
+            });
+        });
+        
+        // Mobile language switcher functionality
+        const mobileLangButton = document.getElementById('mobile-lang-button');
+        const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+
+        if (mobileLangButton && mobileLangDropdown) {
+            mobileLangButton.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent closing the mobile menu
+                mobileLangDropdown.classList.toggle('show');
+            });
+        }
+        
+        // Handle mobile language selection
+        document.querySelectorAll('.mobile-language .lang-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const selectedLang = this.getAttribute('data-lang');
+                document.getElementById('mobile-lang-button').textContent = 'Language: ' + this.textContent.split('(')[0].trim();
+                document.getElementById('lang-button').textContent = this.textContent.split('(')[1].split(')')[0]; // Get abbreviation
+                document.getElementById('mobile-lang-dropdown').classList.remove('show');
+                document.getElementById('lang-dropdown').classList.remove('show');
+
+                // In a real app, you would implement language switching logic here
+                console.log('Mobile language switched to:', selectedLang);
             });
         });
 
@@ -1039,53 +1063,74 @@
         // Example: Set initial auth state (this would come from your backend)
         // updateAuthState(false); // Guest view
         // updateAuthState(true);  // Authenticated view
-        
-        // Digital Ticket Generation Functions
-        function openTicketModal() {
-            document.getElementById('ticketModal').style.display = 'block';
-        }
-        
-        function closeTicketModal() {
-            document.getElementById('ticketModal').style.display = 'none';
-        }
-        
-        function selectService(serviceName) {
-            document.getElementById('selectedServiceDisplay').textContent = serviceName;
-            document.getElementById('serviceSelection').style.display = 'none';
-            document.getElementById('previewSection').style.display = 'block';
-        }
-        
-        function confirmTicket() {
-            // Show loading indicator
-            document.getElementById('previewSection').style.display = 'none';
-            document.getElementById('loadingIndicator').style.display = 'block';
-            
-            // Simulate backend request
-            setTimeout(function() {
-                // Hide modal and show ticket page
-                document.getElementById('ticketModal').style.display = 'none';
-                document.getElementById('ticketPage').style.display = 'block';
-                
-                // Update ticket information
-                document.getElementById('ticketService').textContent = document.getElementById('selectedServiceDisplay').textContent;
-            }, 2000);
-        }
-        
-        function closeTicketPage() {
-            document.getElementById('ticketPage').style.display = 'none';
-        }
-        
-        function printTicket() {
-            window.print();
-        }
-        
-        // Close modal if clicked outside
-        window.onclick = function(event) {
-            var modal = document.getElementById('ticketModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
+
+        // Digital Ticket Generation Functions - wrapped in DOM ready to ensure elements exist
+        document.addEventListener('DOMContentLoaded', function() {
+            window.openTicketModal = function() {
+                var modal = document.getElementById('ticketModal');
+                if (modal) {
+                    modal.style.display = 'block';
+                } else {
+                    console.error('Ticket modal element not found!');
+                }
+            };
+
+            window.closeTicketModal = function() {
+                var modal = document.getElementById('ticketModal');
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            };
+
+            window.selectService = function(serviceName) {
+                document.getElementById('selectedServiceDisplay').textContent = serviceName;
+                document.getElementById('serviceSelection').style.display = 'none';
+                document.getElementById('previewSection').style.display = 'block';
+            };
+
+            window.confirmTicket = function() {
+                // Show loading indicator
+                document.getElementById('previewSection').style.display = 'none';
+                document.getElementById('loadingIndicator').style.display = 'block';
+
+                // Simulate backend request
+                setTimeout(function() {
+                    // Hide modal and show ticket page
+                    var modal = document.getElementById('ticketModal');
+                    var ticketPage = document.getElementById('ticketPage');
+                    
+                    if (modal) modal.style.display = 'none';
+                    if (ticketPage) ticketPage.style.display = 'block';
+
+                    // Update ticket information
+                    var serviceDisplay = document.getElementById('selectedServiceDisplay');
+                    var ticketService = document.getElementById('ticketService');
+                    
+                    if (serviceDisplay && ticketService) {
+                        ticketService.textContent = serviceDisplay.textContent;
+                    }
+                }, 2000);
+            };
+
+            window.closeTicketPage = function() {
+                var ticketPage = document.getElementById('ticketPage');
+                if (ticketPage) {
+                    ticketPage.style.display = 'none';
+                }
+            };
+
+            window.printTicket = function() {
+                window.print();
+            };
+
+            // Close modal if clicked outside
+            window.onclick = function(event) {
+                var modal = document.getElementById('ticketModal');
+                if (modal && event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
         
         // Real-Time Queue Tracker Functions
         function openQueueTracker() {
@@ -1818,6 +1863,103 @@
         .track-ticket-btn:hover {
             background-color: #1E3C72;
         }
+        
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .nav-center {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+                padding: 20px 0;
+                z-index: 999;
+            }
+            
+            .mobile-menu.show {
+                display: block;
+            }
+            
+            .mobile-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .mobile-company-name {
+                padding: 10px 24px;
+                border-bottom: 1px solid #E5E7EB;
+                display: flex;
+                align-items: center;
+            }
+            
+            .mobile-auth {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px 24px;
+                border-bottom: 1px solid #E5E7EB;
+            }
+            
+            .mobile-menu li {
+                padding: 10px 24px;
+                border-bottom: 1px solid #E5E7EB;
+            }
+            
+            .mobile-menu li:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-menu a {
+                text-decoration: none;
+                color: #1F2937;
+                font-weight: 500;
+                display: block;
+                transition: color 0.3s ease;
+            }
+            
+            .mobile-menu a:hover {
+                color: #2F6FD6;
+            }
+            
+            .mobile-logout {
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid #E5E7EB;
+            }
+            
+            .mobile-logout a {
+                color: #EF4444 !important;
+            }
+            
+            .mobile-language {
+                padding: 10px 24px;
+                border-bottom: 1px solid #E5E7EB;
+            }
+            
+            .mobile-language .language-switcher {
+                width: 100%;
+            }
+            
+            .mobile-language .lang-btn {
+                width: 100%;
+                text-align: left;
+            }
+        }
     </style>
     
     <!-- Real-Time Queue Tracker Card -->
@@ -1870,8 +2012,6 @@
     </div>
     
     <script>
-        // Existing ticket functions remain unchanged...
-        
         // Real-Time Queue Tracker Functions
         function openQueueTracker() {
             document.getElementById('queueTracker').style.display = 'block';
