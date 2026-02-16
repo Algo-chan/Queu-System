@@ -1,5 +1,6 @@
 // Authentication state - in a real app, this would come from your backend
 let isAuthenticated = false;
+let currentLanguage = 'en'; // Track current language for dynamic content
 
 // Translation dictionary
 const translations = {
@@ -9,6 +10,12 @@ const translations = {
         help: "Help",
         register: "Register",
         login: "Login",
+        logout: "Logout",
+        profile: "Profile",
+        settings: "Settings",
+        guide: "Guide",
+        myTickets: "My Tickets",
+        language: "Language",
         heroTitle: "Empowering Your Public Services",
         heroSubtitle: "Access, Manage, and Connect with Ease.",
         getStarted: "Get Started",
@@ -46,97 +53,260 @@ const translations = {
         complaint: "Complaint",
         other: "Other",
         selectSubject: "Select a subject",
-        officeHours: "Office Hours"
-    },
-    or: {
-        home: "Mana",
-        services: "Galfaawwanii",
-        help: "Gargaara",
-        register: "Galmaa'uu",
-        login: "Seeni",
-        heroTitle: "Oromoo Mana Barbaachisaan Keessaa Danda'a",
-        heroSubtitle: "Barbaada, Ittiisummaa fi Walitti Dhufaa.",
-        getStarted: "Jalqabi",
-        learnMore: "Dabalataan Baradhu",
-        whatItDoes: "Maal Gargaara",
-        whatItDoesDesc: "Seera barbaachisaalee adda addaa tokkootti walitti qabama",
-        benefits: "Faayidaan",
-        benefitsDesc: "Burookiraasiin xinnaata, gammadiin ni guddata, fi dubbifannoonni dabalata",
-        howItWorks: "Maaliin Danda'a",
-        howItWorksDesc: "Galmaa'uu sirrii, seenuu dandeettii fi gavvii barbaachisaalee beekumsa ta'an",
-        registerAccount: "Hariiroo Barbaadami",
-        loginAccount: "Hariiroo Seenu",
-        ctaText: "Nu waliin galchi fi seera barbaachisaa salphinaan argadhu",
-        aboutUs: "Warshaa",
-        aboutSubtitle: "Sirna keenya, rakkoo keenya fi dhiifama keenya gadi fakki",
-        ourMission: "Sirna keenya",
-        ourVision: "Rakkoo keenya",
-        whyChooseUs: "Maaliif nu filachuu qabdu",
-        contactUs: "Nu qunnami",
-        contactSubtitle: "Gaqoomaafi deebii barbaadda? Nu qunnamaa jiruun nu geessi kun arratti nu deebisnu.",
-        fullNameLabel: "Maqaa Sirrii",
-        emailLabel: "Imeelii Adreesii",
-        messageLabel: "Eerree",
-        sendMessage: "Eerree Ergadi",
-        getInTouch: "Qunnamaa Jiru",
-        reachOut: "Garaagarummaan armaan gadii irratti nu qunnamaa jirtuuf nu geessaa dandeenyu.",
-        supportEmail: "Duub-deebii Kolffee",
-        phoneNumber: "Lakkoofsa Qunnamaa",
-        officeAddress: "Adreesii Bilbiilaa",
-        followUs: "Nu Beeqi",
-        subject: "Gocca",
-        generalInquiry: "Baraabarruu Dacheeffannoo",
-        technicalSupport: "Deega Biiftuu",
-        feedback: "Hubachiisa",
-        complaint: "Haqama",
-        other: "Afaan Biroo",
-        selectSubject: "Gocca filadhu",
-        officeHours: "Sa'eetota Bilbiilaa"
+        officeHours: "Office Hours",
+        ourValues: "Our Values",
+        innovation: "Innovation",
+        innovationDesc: "We build smart, scalable, and efficient queue solutions",
+        integrity: "Integrity",
+        integrityDesc: "We ensure transparency, fairness, and reliability in service management",
+        efficiency: "Efficiency",
+        efficiencyDesc: "We optimize waiting times and service flow using digital automation",
+        aboutTitle: "ABOUT US",
+        aboutDesc1: "The Queue Management System is designed to reduce long waiting lines in government offices, hospitals, banks, and service centers by offering digital ticketing, real-time queue tracking, analytics, and service optimization tools.",
+        aboutDesc2: "We are committed to improving service delivery through technology, ensuring efficiency, transparency, and enhanced customer satisfaction across all public and private service sectors.",
+        visionTitle: "Our Vision",
+        visionDesc: "To digitize and modernize public service queues across institutions",
+        teamTitle: "Meet the Team",
+        teamDesc: "A passionate team of developers building efficient digital solutions",
+        achievementsTitle: "Our Achievements",
+        achievementsDesc: "Successfully reducing waiting times through smart queue automation",
+        historyTitle: "Company History",
+        historyDesc: "Founded to solve long waiting line challenges using technology",
+        mainOffice: "Main Office",
+        businessInquiries: "Business Inquiries",
+        sendUsMessage: "Send us a Message",
+        organization: "Organization",
+        message: "Message",
+        contactDesc: "Helping you manage queues efficiently and digitally.",
+        contactInfo: "The Queue Management System helps government offices, hospitals, banks, and service centers reduce waiting times and improve service delivery through digital queue management.",
+        generateTicket: "Generate Ticket",
+        trackTicket: "Track Ticket",
+        digitalTicket: "Digital Ticket Generation",
+        digitalTicketDesc: "Online queue numbers via SMS/Email.",
+        realTimeTracking: "Real-Time Queue Tracking",
+        realTimeTrackingDesc: "Live updates and monitoring from anywhere.",
+        estimatedWait: "Estimated Waiting Time",
+        estimatedWaitDesc: "Accurate wait durations to help plan visits.",
+        adminDashboard: "Admin Dashboard",
+        adminDashboardDesc: "Monitor queues and manage counters in real-time.",
+        step1: "Select Service",
+        step1Desc: "Choose the service you need",
+        step2: "Generate Queue Number",
+        step2Desc: "Get your digital ticket",
+        step3: "Monitor Position Online",
+        step3Desc: "Track your position remotely",
+        step4: "Receive Smart Notifications",
+        step4Desc: "Get alerts when it's your turn",
+        coreFeatures: "Core Features",
+        howItWorksTitle: "How It Works",
+        smartDigitalQueue: "Smart Digital Queue Management System",
+        manageEfficiently: "Manage customers efficiently, reduce waiting chaos, and improve service experience.",
+        noTickets: "No tickets generated yet",
+        generateToSee: "Generate a ticket to see it here",
+        ticketNumber: "Ticket",
+        service: "Service",
+        status: "Status",
+        position: "Position",
+        waitTime: "Wait Time",
+        peopleAhead: "People Ahead",
+        waiting: "Waiting",
+        serving: "Serving",
+        completed: "Completed",
+        printTicket: "Print",
+        downloadTicket: "Download",
+        qrCode: "QR Code",
+        confirmTicket: "Confirm Ticket",
+        selectedService: "Selected Service",
+        currentTicket: "Current Ticket Being Served",
+        preview: "Ticket Preview",
+        generating: "Generating your ticket...",
+        close: "Close",
+        refresh: "Refresh",
+        share: "Share",
+        queueProgress: "Queue Progress",
+        positionsAway: "You are",
+        positionsAwayFrom: "positions away from being served",
+        lastUpdated: "Last updated",
+        justNow: "Just now",
+        notificationChanged: "Your ticket status has changed to SERVING!",
+        loginTitle: "Login to Your Account",
+        loginSubtitle: "Welcome back! Please enter your details.",
+        emailPlaceholder: "Enter your email",
+        passwordPlaceholder: "Enter your password",
+        forgotPassword: "Forgot Password?",
+        loginButton: "Sign in",
+        noAccount: "Don't have an account?",
+        signUp: "Sign up",
+        registerTitle: "Create Your Account",
+        registerSubtitle: "Join us today and start managing queues digitally.",
+        confirmPassword: "Confirm Password",
+        registerButton: "Create Account",
+        haveAccount: "Already have an account?",
+        signIn: "Sign in",
+        profileTitle: "Profile",
+        accountInfo: "Account Information",
+        memberSince: "Member Since",
+        security: "Security",
+        changePassword: "Change Password",
+        changePasswordDesc: "Update your password regularly for better security",
+        logoutButton: "Logout",
+        logoutDesc: "Sign out from your account",
+        myGeneratedTickets: "My Generated Tickets",
+        noTicketsGenerated: "No tickets generated yet",
+        generateToSeeHere: "Generate a ticket to see it here",
+        trackTicketBtn: "Track Ticket"
     },
     am: {
         home: "ቤት",
         services: "ግልጋሎቶች",
         help: "እገዛ",
-        register: "መዝገብ",
-        login: "ግባ",
-        heroTitle: "የህዝብ አገልግሎቶን ትኩረት ማድረግ",
+        register: "መመዝገብ",
+        login: "መግባት",
+        logout: "መውጣት",
+        profile: "መገለጫ",
+        settings: "ቅንብሮች",
+        guide: "መመሪያ",
+        myTickets: "የእኔ ቲኬቶች",
+        language: "ቋንቋ",
+        heroTitle: "የህዝብ አገልግሎቶችን ማስተዳደር",
         heroSubtitle: "ለመዳረሻ፣ ለማስተዳደር እና ለመገናኘት ቀላል።",
-        getStarted: "ምሩ",
+        getStarted: "ጀምር",
         learnMore: "ተጨማሪ መረጃ",
         whatItDoes: "ምን ይሰራል",
-        whatItDoesDesc: "የተለያዩ የዘርፍ አገልግሎቶችን ወደ አንድ ተደራሽ መድረክ ያዋሃዳል",
-        benefits: "ተከታታዮች",
-        benefitsDesc: "የቢሮክራሲያዊነትን ብዛት ይቀንሳል፣ ጊዜ ይቆጥባል እና የግልጽነት መጠን ይጨምራል",
+        whatItDoesDesc: "የተለያዩ የመንግስት አገልግሎቶችን ወደ አንድ መድረክ ያዋህዳል",
+        benefits: "ጥቅሞች",
+        benefitsDesc: "የቢሮክራሲን ይቀንሳል፣ ጊዜ ይቆጥባል እና ግልጽነትን ይጨምራል",
         howItWorks: "እንዴት ይሰራል",
-        howItWorksDesc: "ቀላል የመዝገብ ሂደት፣ የሚረዳ ግቢ እና የአገልግሎት አስተዳደር በቀላሉ",
+        howItWorksDesc: "ቀላል የመዝገብ ሂደት፣ ደህንነቱ የተጠበቀ መግቢያ እና ቀላል የአገልግሎት አስተዳደር",
         registerAccount: "መለያ ይመዝገቡ",
         loginAccount: "መለያዎን ይግቡ",
-        ctaText: "ከእኛ ጋር ይቀላቀሉ እና የቀላሉ የህዝብ አገልግሎቶችን ያግኙ",
+        ctaText: "ከእኛ ጋር ይቀላቀሉ እና ቀላል የህዝብ አገልግሎቶችን ያግኙ",
         aboutUs: "ስለ እኛ",
-        aboutSubtitle: "ስለ ሚኞን፣ ህልምና እና ለመስዋዕት መስረታችን ይወቁ",
-        ourMission: "ሚኞን ማድረግ",
-        ourVision: "ህልመት",
-        whyChooseUs: "ምክን ነው እኛን የምታመርባለህ",
+        aboutSubtitle: "ስለ ተልእኮ፣ ራዕይ እና ለዜጎች አገልግሎት ያለንን ቁርጠኝነት ይወቁ",
+        ourMission: "ተልእኮአችን",
+        ourVision: "ራዕያችን",
+        whyChooseUs: "ለምን እኛን መምረጥ አለብዎት",
         contactUs: "አግኙን",
-        contactSubtitle: "ጥያቄዎች ወይም አስተያየቶች አሉዎት? እኛን ያግኙ እና በቅርቡ ይመልሱልን.",
+        contactSubtitle: "ጥያቄዎች ወይም አስተያየቶች አሉዎት? እኛን ያግኙን በቅርቡ እንመልስልዎታለን።",
         fullNameLabel: "ሙሉ ስም",
-        emailLabel: "ኢሜል አድራሻ",
+        emailLabel: "ኢሜይል አድራሻ",
         messageLabel: "መልእክት",
         sendMessage: "መልእክት ላክ",
         getInTouch: "አግኙን",
-        reachOut: "ከታች ያሉትን መንገዶች በማናቸውም እኛን ለመገናኘት ነፃነት ይፈልጉ.",
-        supportEmail: "የድጋፍ ኢሜል",
+        reachOut: "ከታች ካሉት መንገዶች በማንኛውም እኛን ለማግኘት ነፃነት ይሰማዎት።",
+        supportEmail: "የድጋፍ ኢሜይል",
         phoneNumber: "ስልክ ቁጥር",
         officeAddress: "የቢሮ አድራሻ",
-        followUs: "ያድኑን",
+        followUs: "ያከትሉን",
         subject: "ርዕስ",
         generalInquiry: "አጠቃላይ ጥያቄ",
         technicalSupport: "ቴክኒካዊ ድጋፍ",
         feedback: "ግብረመልስ",
-        complaint: "አዝርባረት",
+        complaint: "ቅሬታ",
         other: "ሌላ",
         selectSubject: "ርዕስ ይምረጡ",
-        officeHours: "የቢሮ ሰዓቶች"
+        officeHours: "የቢሮ ሰዓቶች",
+        ourValues: "እሴቶቻችን",
+        innovation: "ፈጠራ",
+        innovationDesc: "ብልህ፣ ሊሰፋ የሚችል እና ቀላል የሪጋ መፍትሄዎችን እንገነባለን",
+        integrity: "ታማኝነት",
+        integrityDesc: "በአገልግሎት አስተዳደር ግልጽነት፣ ፍትሃዊነት እና ተአማኒነትን እናረጋግጣለን",
+        efficiency: "ቅልጥፍና",
+        efficiencyDesc: "የመጠባበቂያ ጊዜን እና የአገልግሎት ፍሰትን በዲጂታል አውቶሜሽን እናሻሽላለን",
+        aboutTitle: "ስለ እኛ",
+        aboutDesc1: "የሪጋ አስተዳደር ስርዓቱ በመንግስት ጽህፈት ቤቶች፣ ሆስፒታሎች፣ ባንኮች እና የአገልግሎት ማዕከላት ውስጥ ረጅም የመጠባበቂያ ሰፍሮችን ለመቀነስ የተነደፈ ነው።",
+        aboutDesc2: "በቴክኖሎጂ አማካኝነት የአገልግሎት አሰጣጥን ማሻሻል፣ ቅልጥፍናን፣ ግልጽነትን እና የደንበኞች እርካታን ማረጋገጥ ቁርጠኞች ነን።",
+        visionTitle: "ራዕያችን",
+        visionDesc: "በተቋማት ውስጥ የህዝብ አገልግሎት ሪጋዎችን ዲጂታል ማድረግ እና ዘመናዊ ማድረግ",
+        teamTitle: "ቡድኑን ያግኙ",
+        teamDesc: "ቀላል የዲጂታል መፍትሄዎችን የሚገነቡ ቀናተኛ የገንቢዎች ቡድን",
+        achievementsTitle: "ስኬቶቻችን",
+        achievementsDesc: "በብልህ የሪጋ አውቶሜሽን የመጠባበቂያ ጊዜን በተሳካ ሁኔታ መቀነስ",
+        historyTitle: "የኩባንያ ታሪክ",
+        historyDesc: "የተመሰረተው ረጅም የመጠባበቂያ ሰፍር ስርጭቶችን በቴክኖሎጂ ለመፍታት ነው",
+        mainOffice: "ዋና ቢሮ",
+        businessInquiries: "የንግድ ጥያቄዎች",
+        sendUsMessage: "መልእክት ላክልን",
+        organization: "ድርጅት",
+        message: "መልእክት",
+        contactDesc: "ሪጋዎችን በቅልጥፍና እና በዲጂታል እንዲያስተዳድሩ እንረዳዎታለን።",
+        contactInfo: "የሪጋ አስተዳደር ስርዓቱ በመንግስት ጽህፈት ቤቶች፣ ሆስፒታሎች፣ ባንኮች እና የአገልግሎት ማዕከላት ውስጥ የመጠባበቂያ ጊዜን ለመቀነስ እና የአገልግሎት አሰጣጥን ለማሻሻል ይረዳል።",
+        generateTicket: "ቲኬት አውጣ",
+        trackTicket: "ቲኬትን ተከታተል",
+        digitalTicket: "ዲጂታል ቲኬት ማውጫ",
+        digitalTicketDesc: "በኤስኤምኤስ/ኢሜይል የሪጋ ቁጥሮች።",
+        realTimeTracking: "በቅጽበት የሪጋ ክትትል",
+        realTimeTrackingDesc: "ከየትኛውም ቦታ ቀጥተኛ ዝመናዎች እና ክትትል።",
+        estimatedWait: "የተገመተ የመጠባበቂያ ጊዜ",
+        estimatedWaitDesc: "ጉብኝቶችን ለመቅደት ትክክለኛ የመጠባበቂያ ጊዜዎች።",
+        adminDashboard: "የአስተዳዳሪ ዳሽቦርድ",
+        adminDashboardDesc: "ሪጋዎችን ይከታተሉ እና ቆጣሪዎችን በቅጽበት ያስተዳድሩ።",
+        step1: "አገልግሎት ይምረጡ",
+        step1Desc: "የሚያስፈልግዎትን አገልግሎት ይምረጡ",
+        step2: "የሪጋ ቁጥር አውጡ",
+        step2Desc: "ዲጂታል ቲኬትዎን ያግኙ",
+        step3: "ቦታዎን በመስመር ይከታተሉ",
+        step3Desc: "ቦታዎን ርቀው ይከታተሉ",
+        step4: "ብልህ ማሳወቂያዎችን ይቀበሉ",
+        step4Desc: "ወራዎት ሲደርስ ማሳወቂያዎችን ያግኙ",
+        coreFeatures: "ዋና ዋና ባህሪያት",
+        howItWorksTitle: "እንዴት ይሰራል",
+        smartDigitalQueue: "ብልህ ዲጂታል የሪጋ አስተዳደር ስርዓት",
+        manageEfficiently: "ደንበኞችን በቅልጥፍና ያስተዳድሩ፣ የመጠባበቂያ ስርዓትን ይቀንሱ እና የአገልግሎት ልምድን ያሻሽሉ።",
+        noTickets: "ምንም ቲኬቶች አልተወጡም",
+        generateToSee: "ቲኬት አውጥተው እዚህ ለማየት",
+        ticketNumber: "ቲኬት",
+        service: "አገልግሎት",
+        status: "ሁኔታ",
+        position: "ቦታ",
+        waitTime: "የመጠባበቂያ ጊዜ",
+        peopleAhead: "ከፊትዎ ያሉ ሰዎች",
+        waiting: "በመጠባበቅ ላይ",
+        serving: "በአገልግሎት ላይ",
+        completed: "ተጠናቋል",
+        printTicket: "አትም",
+        downloadTicket: "አውርድ",
+        qrCode: "ኪው አር ኮድ",
+        confirmTicket: "ቲኬቱን አረጋግጥ",
+        selectedService: "የተመረጠ አገልግሎት",
+        currentTicket: "አሁን የሚያገለግል ቲኬት",
+        preview: "የቲኬት ቅድመ እይታ",
+        generating: "ቲኬትዎን በማውጣት ላይ...",
+        close: "ዝጋ",
+        refresh: "አድስ",
+        share: "አጋራ",
+        queueProgress: "የሪጋ እድገት",
+        positionsAway: "ከ",
+        positionsAwayFrom: "ቦታዎች ርቀው ነዎት",
+        lastUpdated: "መጨረሻ የተዘመነ",
+        justNow: "አሁን ብቻ",
+        notificationChanged: "የቲኬትዎ ሁኔታ ወደ አገልግሎት ላይ ተቀይሯል!",
+        loginTitle: "መለያዎን ይግቡ",
+        loginSubtitle: "እንኳን ደህና መጡ! የእርስዎን ዝርዝሮች ያስገቡ።",
+        emailPlaceholder: "ኢሜይልዎን ያስገቡ",
+        passwordPlaceholder: "የይለፍ ቃልዎን ያስገቡ",
+        forgotPassword: "የይለፍ ቃልዎን ረስተዋል?",
+        loginButton: "ግባ",
+        noAccount: "መለያ የለዎትም?",
+        signUp: "ተመዝገብ",
+        registerTitle: "መለያዎን ይፍጠሩ",
+        registerSubtitle: "ዛሬ ይቀላቀሉን እና ሪጋዎችን በዲጂታል ማስተዳደር ይጀምሩ።",
+        confirmPassword: "የይለፍ ቃል ያረጋግጡ",
+        registerButton: "መለያ ይፍጠሩ",
+        haveAccount: "መለያ አለዎት?",
+        signIn: "ግባ",
+        profileTitle: "መገለጫ",
+        accountInfo: "የመለያ መረጃ",
+        memberSince: "አባል ከሆኑበት",
+        security: "ደህንነት",
+        changePassword: "የይለፍ ቃል ይቀይሩ",
+        changePasswordDesc: "ለተሻለ ደህንነት የይለፍ ቃልዎን በተደጋጋሚ ያዘምኑ",
+        logoutButton: "ውጣ",
+        logoutDesc: "ከመለያዎ ይውጡ",
+        myGeneratedTickets: "የተወጡ ቲኬቶቼ",
+        noTicketsGenerated: "ምንም ቲኬቶች አልተወጡም",
+        generateToSeeHere: "ቲኬት አውጥተው እዚህ ለማየት",
+        trackTicketBtn: "ቲኬትን ተከታተል"
     }
 };
 
@@ -154,6 +324,9 @@ function selectLanguage(lang) {
     if (langText) {
         langText.textContent = lang.toUpperCase();
     }
+
+    // Update current language global variable
+    currentLanguage = lang;
 
     // Store selected language
     localStorage.setItem('selectedLanguage', lang);
@@ -185,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize language on page load
     const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    currentLanguage = savedLang; // Set global current language
     const langText = document.getElementById('desktopLangText');
     if (langText) {
         langText.textContent = savedLang.toUpperCase();
@@ -222,10 +396,11 @@ document.addEventListener('DOMContentLoaded', function() {
             option.addEventListener('click', function() {
                 const selectedLang = this.getAttribute('data-lang');
                 updateLanguage(selectedLang);
+                applyTranslations(selectedLang);
 
                 // Update button text to show selected language abbreviation
                 langButton.textContent = this.textContent.split('(')[1].split(')')[0];
-                
+
                 // Also update mobile language button if it exists
                 const mobileLangButton = document.getElementById('mobile-lang-button');
                 if (mobileLangButton) {
@@ -237,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Close dropdown after selection
                 langDropdown.classList.remove('show');
-                
+
                 // Also close mobile dropdown if it exists
                 const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
                 if (mobileLangDropdown) {
@@ -246,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
+
     // Mobile language switcher functionality
     const mobileLangButton = document.getElementById('mobile-lang-button');
     const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
@@ -260,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Close mobile language dropdown when clicking outside
         document.addEventListener('click', function(e) {
-            if (mobileLangButton && !mobileLangButton.contains(e.target) && 
+            if (mobileLangButton && !mobileLangButton.contains(e.target) &&
                 mobileLangDropdown && !mobileLangDropdown.contains(e.target)) {
                 mobileLangDropdown.classList.remove('show');
             }
@@ -271,10 +446,11 @@ document.addEventListener('DOMContentLoaded', function() {
             option.addEventListener('click', function() {
                 const selectedLang = this.getAttribute('data-lang');
                 updateLanguage(selectedLang);
+                applyTranslations(selectedLang);
 
                 // Update mobile button text
                 mobileLangButton.textContent = 'Language: ' + this.textContent.split('(')[0].trim();
-                
+
                 // Also update desktop language button
                 if (langButton) {
                     langButton.textContent = this.textContent.split('(')[1].split(')')[0]; // Get abbreviation
@@ -285,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Close dropdown after selection
                 mobileLangDropdown.classList.remove('show');
-                
+
                 // Also close desktop dropdown
                 if (langDropdown) {
                     langDropdown.classList.remove('show');

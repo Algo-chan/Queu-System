@@ -887,8 +887,8 @@
                     <li><a href="index.html" class="nav-link" data-translate="home">Home</a></li>
                     <li><a href="services.html" class="nav-link" data-translate="services">Services</a></li>
                     <li><a href="#" class="nav-link" data-translate="help">Help</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="about.html" class="nav-link" data-translate="aboutUs">About</a></li>
+                    <li><a href="contact.html" class="nav-link" data-translate="contactUs">Contact</a></li>
                 </ul>
             </div>
 
@@ -942,15 +942,15 @@
             <ul>
                 <!-- Auth buttons at top when not logged in -->
                 <li class="mobile-auth" id="mobileAuth">
-                    <a href="login.html" class="btn btn-outline">Login</a>
-                    <a href="register.html" class="btn btn-primary">Register</a>
+                    <a href="login.html" class="btn btn-outline" data-translate="login">Login</a>
+                    <a href="register.html" class="btn btn-primary" data-translate="register">Register</a>
                 </li>
 
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="services.html" data-translate="services">Services</a></li>
+                <li><a href="#" data-translate="help">Help</a></li>
+                <li><a href="about.html" data-translate="aboutUs">About</a></li>
+                <li><a href="contact.html" data-translate="contactUs">Contact</a></li>
                 <li><a href="#" onclick="openTicketsListPage(); return false;">My Tickets</a></li>
                 
                 <!-- Language selector in mobile menu -->
@@ -974,7 +974,7 @@
     <div id="myTicketsDropdown" class="my-tickets-dropdown">
         <div class="my-tickets-content">
             <div class="my-tickets-header">
-                <h3>My Generated Tickets</h3>
+                <h3 data-translate="myGeneratedTickets">My Generated Tickets</h3>
                 <button class="close-my-tickets" onclick="toggleMyTicketsDropdown()">&times;</button>
             </div>
             <div class="my-tickets-body" id="myTicketsList">
@@ -2394,11 +2394,14 @@
             const ticketsList = document.getElementById('myTicketsList');
 
             if (userTickets.length === 0) {
+                const noTicketsText = translations[currentLanguage || 'en']?.noTicketsGenerated || 'No tickets generated yet';
+                const generateToSeeText = translations[currentLanguage || 'en']?.generateToSeeHere || 'Generate a ticket to see it here';
+                
                 ticketsList.innerHTML = `
                     <div class="no-tickets">
                         <i class="fas fa-ticket-alt"></i>
-                        <p>No tickets generated yet</p>
-                        <p style="font-size: 14px; margin-top: 8px;">Generate a ticket to see it here</p>
+                        <p data-translate="noTicketsGenerated">${noTicketsText}</p>
+                        <p style="font-size: 14px; margin-top: 8px;" data-translate="generateToSeeHere">${generateToSeeText}</p>
                     </div>
                 `;
                 return;
@@ -2408,27 +2411,29 @@
             userTickets.forEach(ticket => {
                 const ticketCard = document.createElement('div');
                 ticketCard.className = 'ticket-item-card';
+                const trackTicketText = translations[currentLanguage || 'en']?.trackTicketBtn || 'Track Ticket';
+                
                 ticketCard.innerHTML = `
                     <div class="ticket-item-header">
                         <span class="ticket-item-number">${ticket.number}</span>
                         <span class="ticket-item-status status-${ticket.status.toLowerCase()}">${ticket.status}</span>
                     </div>
                     <div class="ticket-item-detail">
-                        <span class="ticket-item-detail-label">Service:</span>
+                        <span class="ticket-item-detail-label" data-translate="service">Service:</span>
                         <span class="ticket-item-detail-value">${ticket.service}</span>
                     </div>
                     ${ticket.status !== 'Completed' ? `
                     <div class="ticket-item-detail">
-                        <span class="ticket-item-detail-label">Position:</span>
+                        <span class="ticket-item-detail-label" data-translate="position">Position:</span>
                         <span class="ticket-item-detail-value">${ticket.position} of 15</span>
                     </div>
                     <div class="ticket-item-detail">
-                        <span class="ticket-item-detail-label">Wait Time:</span>
+                        <span class="ticket-item-detail-label" data-translate="waitTime">Wait Time:</span>
                         <span class="ticket-item-detail-value">${ticket.waitTime}</span>
                     </div>
                     ` : ''}
                     <button class="track-ticket-btn" onclick="openQueueTrackerFromList('${ticket.number}', '${ticket.service}')">
-                        <i class="fas fa-sync-alt"></i> Track Ticket
+                        <i class="fas fa-sync-alt"></i> ${trackTicketText}
                     </button>
                 `;
                 ticketsList.appendChild(ticketCard);

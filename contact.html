@@ -365,8 +365,8 @@
                     <li><a href="index.html" class="nav-link" data-translate="home">Home</a></li>
                     <li><a href="services.html" class="nav-link" data-translate="services">Services</a></li>
                     <li><a href="#" class="nav-link" data-translate="help">Help</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="about.html" class="nav-link" data-translate="aboutUs">About</a></li>
+                    <li><a href="contact.html" class="nav-link" data-translate="contactUs">Contact</a></li>
                 </ul>
             </div>
 
@@ -420,16 +420,16 @@
             <ul>
                 <!-- Auth buttons at top when not logged in -->
                 <li class="mobile-auth" id="mobileAuth">
-                    <a href="login.html" class="btn btn-outline">Login</a>
-                    <a href="register.html" class="btn btn-primary">Register</a>
+                    <a href="login.html" class="btn btn-outline" data-translate="login">Login</a>
+                    <a href="register.html" class="btn btn-primary" data-translate="register">Register</a>
                 </li>
 
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-                
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="services.html" data-translate="services">Services</a></li>
+                <li><a href="#" data-translate="help">Help</a></li>
+                <li><a href="about.html" data-translate="aboutUs">About</a></li>
+                <li><a href="contact.html" class="active" data-translate="contactUs">Contact</a></li>
+
                 <!-- Language selector in mobile menu -->
                 <li class="mobile-language">
                     <div class="language-switcher">
@@ -440,17 +440,17 @@
                         </div>
                     </div>
                 </li>
-                
-                <li><a href="#"><i class="fas fa-book" style="color: #1e3a8a;"></i> Guide</a></li>
-                <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt" style="color: #1e3a8a;"></i> Logout</a></li>
+
+                <li><a href="#"><i class="fas fa-book" style="color: #1e3a8a;"></i> <span data-translate="guide">Guide</span></a></li>
+                <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt" style="color: #1e3a8a;"></i> <span data-translate="logout">Logout</span></a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
         <div class="header-section" style="background: #1a41ab; color: white; padding: 60px 20px; text-align: center; margin-bottom: 50px; border-radius: 15px;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 15px;">Get in Touch</h1>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9;">We'd love to hear from you. Reach out to us for any inquiries or support.</p>
+            <h1 style="font-size: 2.5rem; margin-bottom: 15px;" data-translate="contactUs">Get in Touch</h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9;" data-translate="contactSubtitle">We'd love to hear from you. Reach out to us for any inquiries or support.</p>
         </div>
 
         <!-- Contact Information Cards -->
@@ -459,7 +459,7 @@
                 <div class="contact-icon">
                     <i class="fas fa-map-marker-alt" style="color: #193ea4;"></i>
                 </div>
-                <h3>Main Office</h3>
+                <h3 data-translate="officeAddress">Main Office</h3>
                 <p>Addis Ababa, Ethiopia – Queue System HQ</p>
             </div>
 
@@ -467,7 +467,7 @@
                 <div class="contact-icon">
                     <i class="fas fa-phone-alt" style="color: #193ea4;"></i>
                 </div>
-                <h3>Phone Number</h3>
+                <h3 data-translate="phoneNumber">Phone Number</h3>
                 <p>+251 9XX XXX XXX – Support Line Mon–Fri</p>
             </div>
 
@@ -475,7 +475,7 @@
                 <div class="contact-icon">
                     <i class="fas fa-headset" style="color: #193ea4;"></i>
                 </div>
-                <h3>Technical Support</h3>
+                <h3 data-translate="technicalSupport">Technical Support</h3>
                 <p>support@queuesystem.com</p>
             </div>
 
@@ -483,7 +483,7 @@
                 <div class="contact-icon">
                     <i class="fas fa-briefcase" style="color: #193ea4;"></i>
                 </div>
-                <h3>Business Inquiries</h3>
+                <h3 data-translate="supportEmail">Business Inquiries</h3>
                 <p>business@queuesystem.com</p>
             </div>
         </div>
@@ -492,15 +492,15 @@
         <div class="contact-section">
             <!-- Contact Form -->
             <div class="contact-form">
-                <h2 class="form-title">Send us a Message</h2>
+                <h2 class="form-title" data-translate="sendMessage">Send us a Message</h2>
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="fullName">Full Name *</label>
+                        <label for="fullName" data-translate="fullNameLabel">Full Name *</label>
                         <input type="text" id="fullName" class="input-field" placeholder="Enter your full name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email" data-translate="emailLabel">Email Address *</label>
                         <input type="email" id="email" class="input-field" placeholder="Enter your email address" required>
                     </div>
 
@@ -510,28 +510,28 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="subject">Subject *</label>
+                        <label for="subject" data-translate="subject">Subject *</label>
                         <select id="subject" class="input-field" required>
-                            <option value="" disabled selected>Select a subject</option>
-                            <option value="technical">Technical Support</option>
+                            <option value="" disabled selected data-translate="selectSubject">Select a subject</option>
+                            <option value="technical" data-translate="technicalSupport">Technical Support</option>
                             <option value="business">Business Inquiry</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="other">Other</option>
+                            <option value="feedback" data-translate="feedback">Feedback</option>
+                            <option value="other" data-translate="other">Other</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message *</label>
+                        <label for="message" data-translate="messageLabel">Message *</label>
                         <textarea id="message" class="input-field" placeholder="Enter your message here..." required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-submit">Send Message</button>
+                    <button type="submit" class="btn-submit" data-translate="sendMessage">Send Message</button>
                 </form>
             </div>
 
             <!-- Contact Info -->
             <div class="contact-info">
-                <h2 class="info-title">Get in Touch</h2>
+                <h2 class="info-title" data-translate="getInTouch">Get in Touch</h2>
                 <p class="info-subtitle">Helping you manage queues efficiently and digitally.</p>
                 <p class="info-description">
                     The Queue Management System helps government offices, hospitals, banks, and service centers reduce waiting times and improve service delivery through digital queue management. Our platform streamlines operations, enhances customer experience, and provides valuable insights through analytics.

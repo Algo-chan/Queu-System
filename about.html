@@ -284,8 +284,8 @@
                     <li><a href="index.html" class="nav-link" data-translate="home">Home</a></li>
                     <li><a href="services.html" class="nav-link" data-translate="services">Services</a></li>
                     <li><a href="#" class="nav-link" data-translate="help">Help</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="about.html" class="nav-link" data-translate="aboutUs">About</a></li>
+                    <li><a href="contact.html" class="nav-link" data-translate="contactUs">Contact</a></li>
                 </ul>
             </div>
 
@@ -339,16 +339,16 @@
             <ul>
                 <!-- Auth buttons at top when not logged in -->
                 <li class="mobile-auth" id="mobileAuth">
-                    <a href="login.html" class="btn btn-outline">Login</a>
-                    <a href="register.html" class="btn btn-primary">Register</a>
+                    <a href="login.html" class="btn btn-outline" data-translate="login">Login</a>
+                    <a href="register.html" class="btn btn-primary" data-translate="register">Register</a>
                 </li>
 
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="services.html" data-translate="services">Services</a></li>
+                <li><a href="#" data-translate="help">Help</a></li>
+                <li><a href="about.html" class="active" data-translate="aboutUs">About</a></li>
+                <li><a href="contact.html" data-translate="contactUs">Contact</a></li>
+
                 <!-- Language selector in mobile menu -->
                 <li class="mobile-language">
                     <div class="language-switcher">
@@ -359,9 +359,9 @@
                         </div>
                     </div>
                 </li>
-                
-                <li><a href="#"><i class="fas fa-book"></i> Guide</a></li>
-                <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+
+                <li><a href="#"><i class="fas fa-book"></i> <span data-translate="guide">Guide</span></a></li>
+                <li class="mobile-logout"><a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> <span data-translate="logout">Logout</span></a></li>
             </ul>
         </div>
     </nav>
@@ -378,32 +378,32 @@
                 <div class="feature-icon">
                     <i class="fas fa-eye"></i>
                 </div>
-                <h3>Our Vision</h3>
-                <p>To digitize and modernize public service queues across institutions</p>
+                <h3 data-translate="visionTitle">Our Vision</h3>
+                <p data-translate="visionDesc">To digitize and modernize public service queues across institutions</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3>Meet the Team</h3>
-                <p>A passionate team of developers building efficient digital solutions</p>
+                <h3 data-translate="teamTitle">Meet the Team</h3>
+                <p data-translate="teamDesc">A passionate team of developers building efficient digital solutions</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-trophy"></i>
                 </div>
-                <h3>Our Achievements</h3>
-                <p>Successfully reducing waiting times through smart queue automation</p>
+                <h3 data-translate="achievementsTitle">Our Achievements</h3>
+                <p data-translate="achievementsDesc">Successfully reducing waiting times through smart queue automation</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-history"></i>
                 </div>
-                <h3>Company History</h3>
-                <p>Founded to solve long waiting line challenges using technology</p>
+                <h3 data-translate="historyTitle">Company History</h3>
+                <p data-translate="historyDesc">Founded to solve long waiting line challenges using technology</p>
             </div>
         </div>
 
@@ -411,15 +411,15 @@
         <div class="main-content">
             <!-- Values Section -->
             <div class="values-section">
-                <h2>Our Values</h2>
+                <h2 data-translate="ourValues">Our Values</h2>
                 <div class="values-container">
                     <div class="value-card">
                         <div class="value-icon">
                             <i class="fas fa-lightbulb"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Innovation</h3>
-                            <p>We build smart, scalable, and efficient queue solutions</p>
+                            <h3 data-translate="innovation">Innovation</h3>
+                            <p data-translate="innovationDesc">We build smart, scalable, and efficient queue solutions</p>
                         </div>
                     </div>
 
@@ -428,8 +428,8 @@
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Integrity</h3>
-                            <p>We ensure transparency, fairness, and reliability in service management</p>
+                            <h3 data-translate="integrity">Integrity</h3>
+                            <p data-translate="integrityDesc">We ensure transparency, fairness, and reliability in service management</p>
                         </div>
                     </div>
 
@@ -438,8 +438,8 @@
                             <i class="fas fa-bolt"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Efficiency</h3>
-                            <p>We optimize waiting times and service flow using digital automation</p>
+                            <h3 data-translate="efficiency">Efficiency</h3>
+                            <p data-translate="efficiencyDesc">We optimize waiting times and service flow using digital automation</p>
                         </div>
                     </div>
                 </div>
@@ -447,10 +447,10 @@
 
             <!-- About Section -->
             <div class="about-section">
-                <h2>ABOUT US</h2>
-                <p class="subtitle">Innovating for a better service experience.</p>
-                <p>The Queue Management System is designed to reduce long waiting lines in government offices, hospitals, banks, and service centers by offering digital ticketing, real-time queue tracking, analytics, and service optimization tools. Our platform streamlines operations, enhances customer experience, and provides valuable insights through comprehensive analytics.</p>
-                <p>We are committed to improving service delivery through technology, ensuring efficiency, transparency, and enhanced customer satisfaction across all public and private service sectors.</p>
+                <h2 data-translate="aboutTitle">ABOUT US</h2>
+                <p class="subtitle" data-translate="aboutSubtitle">Innovating for a better service experience.</p>
+                <p data-translate="aboutDesc1">The Queue Management System is designed to reduce long waiting lines in government offices, hospitals, banks, and service centers by offering digital ticketing, real-time queue tracking, analytics, and service optimization tools.</p>
+                <p data-translate="aboutDesc2">We are committed to improving service delivery through technology, ensuring efficiency, transparency, and enhanced customer satisfaction across all public and private service sectors.</p>
                 
                 <div class="social-icons">
                     <a href="#" class="social-icon">
